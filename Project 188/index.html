@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Holi Game</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>   
+    <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+    <script src="https://unpkg.com/aframe-physics-extras@0.1.2/dist/aframe-physics-extras.min.js"></script>
+    
+    <script src="./shoot.js"></script>
+  </head>
+  <body>
+    <a-scene id="scene">
+
+      <!--Assets-->
+      <a-assets>        
+        <a-asset-item
+          id="shooter"
+          src="./models/shooter/gun.gltf"
+        ></a-asset-item>
+        
+      </a-assets>
+      
+      <!--Light-->
+      <a-entity light="type: ambient; color: yellow; intensity:0.5"></a-entity>
+
+      <!--Camera and Cursor-->
+      <a-entity
+        id="camera"
+        camera
+        position="0 1.6 0"
+        wasd-controls
+        look-controls="pointerLockEnabled: false"        
+      >
+        <a-entity
+            id="weapon"
+            gltf-model="#shooter"
+            position="0 -4.4 3"
+            rotation="0 180 0"
+            scale="0.35 1 1"          
+          >
+        </a-entity>
+        <a-cursor></a-cursor>        
+      </a-entity>
+
+      <!--waters-->
+      <a-entity waters></a-entity>
+
+      <!--Ground-->
+      <a-plane
+        id="ground"
+        repeat="5 5"
+        position="0 1 0"
+        rotation="-90 0 0"
+        height="200"
+        width="200"
+        color="#FBF2D4"
+        static-body
+        visible="true"
+      >
+      </a-plane>
+
+      <!--cylinder-->
+      <a-cylinder id="cylinder_1"position="-2 1.5 -10" color="tomato" height="1.2" radius="1.2" dynamic-body></a-cylinder>
+
+      <a-cylinder id="cylinder_2"position="0 1.5 -10" color="tomato" height="1.2" radius="1.2" dynamic-body></a-cylinder>
+
+      <a-cylinder id="cylinder_3"position="2 1.5 -10" color="tomato" height="1.2" radius="1.2" dynamic-body></a-cylinder>
+
+      <a-cylinder id="cylinder_4"position="-1 2.5 -10" color="tomato" height="1.2" radius="1.2" dynamic-body></a-cylinder>
+
+      <a-cylinder id="cylinder_5"position="1 2.5 -10" color="tomato" height="1.2" radius="1.2" dynamic-body></a-cylinder>
+
+      <a-cylinder id="cylinder_6"position="0 3.5 -10" color="tomato" height="1.2" radius="1.2" dynamic-body></a-cylinder>
+
+      <!--Walls Through Which Box cannot Pass-->
+      <a-box id="wall_1" color="green" position="-20 1.5 -20" depth="1" height="50" width="10" static-body></a-box>
+      <a-box id="wall_2" color="green" position="0 1.5 -20" depth="1" height="50" width="10" static-body></a-box>
+      <a-box id="wall_3" color="green" position="20 1.5 -20" depth="1" height="50" width="10" static-body></a-box>
+
+      <!--Walls Through Which Box Can Pass-->
+      <a-box id="wall_4" color="white" position="-10 1.5 -20" depth="1" height="50" width="10" opacity="0.5"></a-box>
+      <a-box id="wall_5" color="white" position="10 1.5 -20" depth="1" height="50" width="10" opacity="0.5"></a-box>
+      <a-box id="wall_6" color="white" position="-30 1.5 -20" depth="1" height="50" width="10" opacity="0.5"></a-box>
+      <a-box id="wall_7" color="white" position="30 1.5 -20" depth="1" height="50" width="10" opacity="0.5"></a-box>
+    </a-scene>
+  </body>
+</html>
